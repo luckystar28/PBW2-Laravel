@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\KoleksiDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Koleksi;
 
 class KoleksiController extends Controller
 {
-    public function index() {
-        $koleksi = Koleksi::all();
-        return view('koleksi.daftarKoleksi', compact('koleksi'));
+    public function index(KoleksiDataTable $dataTable)
+    {
+        return $dataTable->render('koleksi.daftarKoleksi');
     }
 
     public function show($id)
