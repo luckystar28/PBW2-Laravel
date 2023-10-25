@@ -6,20 +6,9 @@ use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-
-  Togi Samuel Simarmata
-  6706223067
-  D3 RPLA 46-03
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// Nama    : Davin Wahyu Wardana
+// NIM     : 6706223003
+// Kelas   : D3IF-4603
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,14 +27,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/user', [UserController::class, 'index'])->name('user.daftarPengguna');
     Route::get('/userRegistration', [UserController::class, 'create'])->name('user.registrasi');
     Route::get('/userView/{username}', [UserController::class, 'showUser'])->name('user.infoPengguna');
+    Route::put('/userUpdate/{username}', [UserController::class, 'update'])->name('user.update');
+    Route::get('/userUpdate/{username}', [UserController::class, 'edit'])->name('user.editPengguna');
 
     Route::post('/koleksiStore', [KoleksiController::class, 'store'])->name('koleksi.store');
     Route::get('/koleksi', [KoleksiController::class, 'index'])->name('koleksi.daftarKoleksi');
     Route::get('/koleksiTambah', [KoleksiController::class, 'create'])->name('koleksi.registrasi');
     Route::get('/koleksiView/{id}', [KoleksiController::class, 'show'])->name('koleksi.infoKoleksi');
+    Route::put('/koleksiUpdate/{id}', [KoleksiController::class, 'update'])->name('koleksi.update');
+    Route::get('/koleksiUpdate/{id}', [KoleksiController::class, 'edit'])->name('koleksi.editKoleksi');
 });
+
+// Route::get('/users', [UsersController::class, 'index'])->name('users.index');
 
 require __DIR__.'/auth.php';
 
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
