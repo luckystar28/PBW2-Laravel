@@ -1,7 +1,3 @@
-/**
-     * Togi Samuel Simarmata
-     * 6706223067
-     */
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -17,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('religion', 20);
-            $table->tinyInteger('gender');                              
+            $table->tinyInteger('gender');
         });
     }
 

@@ -4,11 +4,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
-// Nama    : Davin Wahyu Wardana
-// NIM     : 6706223003
-// Kelas   : D3IF-4603
+// Nama    : Togi Samuel Simarmata
+// NIM     : 6706223067
+// Kelas   : D3 RPLA 46-03
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,6 +37,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/koleksiView/{id}', [KoleksiController::class, 'show'])->name('koleksi.infoKoleksi');
     Route::put('/koleksiUpdate/{id}', [KoleksiController::class, 'update'])->name('koleksi.update');
     Route::get('/koleksiUpdate/{id}', [KoleksiController::class, 'edit'])->name('koleksi.editKoleksi');
+    Route::post('/transaksiStore', [TransactionController::class, 'store'])->name('transaksi.store');
+    Route::get('/transaksi', [TransactionController::class, 'index'])->name('transaksi.daftarTransaksi');
+    Route::get('/transaksiTambah', [TransactionController::class, 'create'])->name('transaksi.registrasi');
+    Route::get('/transaksiView/{id}', [TransactionController::class, 'show'])->name('transaksi.infoTransaksi');
+    Route::put('/transaksiUpdate/{id}', [TransactionController::class, 'update'])->name('transaksi.update');
+    Route::get('/transaksiUpdate/{id}', [TransactionController::class, 'edit'])->name('transaksi.editTransaksi');
 });
 
 // Route::get('/users', [UsersController::class, 'index'])->name('users.index');
